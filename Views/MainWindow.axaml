@@ -1,0 +1,111 @@
+<Window 
+    xmlns="https://github.com/avaloniaui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:ACalc.ViewModels" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    xmlns:comment="s is to work with s: tag using system, m is to work with m: tag for model and get the Operator models" 
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:m="clr-namespace:ACalc.Models;assembly=ACalc"
+    CanResize="false"
+
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:Class="ACalc.Views.MainWindow"
+    Icon="/Assets/avalonia-logo.ico" Title="ACalc" MinHeight="300" MinWidth="250" Height="300" Width="250"
+>
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+    </Window.Styles>
+    <Grid RowDefinitions="auto,auto, *">
+        <Menu></Menu>
+        <TextBlock Grid.Row="0" Text="{Binding ShownValue}" TextAlignment="Right" FontSize="40" Margin="10"></TextBlock>
+        <Grid ShowGridLines="true" Grid.Row="1" RowDefinitions="auto,auto,auto,*,*" ColumnDefinitions="auto,auto,*,*,*">
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>1</s:Int32>
+                </Button.CommandParameter>
+                1
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>2</s:Int32>
+                </Button.CommandParameter>
+                2
+            </Button>
+            <Button Grid.Row="0" Grid.Column="2" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>3</s:Int32>
+                </Button.CommandParameter>
+                3
+            </Button>
+            <Button Grid.Row="1" Grid.Column="0" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>4</s:Int32>
+                </Button.CommandParameter>
+                4
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>5</s:Int32>
+                </Button.CommandParameter>
+                5
+            </Button>
+            <Button Grid.Row="1" Grid.Column="2" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>6</s:Int32>
+                </Button.CommandParameter>
+                6
+            </Button>
+            <Button Grid.Row="2" Grid.Column="0" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>7</s:Int32>
+                </Button.CommandParameter>
+                7
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>8</s:Int32>
+                </Button.CommandParameter>
+                8
+            </Button>
+            <Button Grid.Row="2" Grid.Column="2" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>9</s:Int32>
+                </Button.CommandParameter>
+                9
+            </Button>
+            <Button Grid.Row="3" Grid.Column="0" Command="{Binding AddNumberCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>0</s:Int32>
+                </Button.CommandParameter>
+                0
+            </Button>
+            <Button Grid.Row="3" Grid.Column="1" Command="{Binding ExecuteOperationCommand}">
+                <Button.CommandParameter>
+                    <m:Operation>Add</m:Operation>
+                </Button.CommandParameter>
+                +
+            </Button>
+            <Button Grid.Row="3" Grid.Column="2" Command="{Binding ExecuteOperationCommand}">
+                <Button.CommandParameter>
+                    <m:Operation>Subtract</m:Operation>
+                </Button.CommandParameter>
+                -
+            </Button>
+            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Padding="15" Command="{Binding ExecuteOperationCommand}">
+                <Button.CommandParameter>
+                    <m:Operation>Result</m:Operation>
+                </Button.CommandParameter>
+                =
+            </Button>
+            <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Padding="15" Command="{Binding ResetCommand}">
+                CANC
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
